@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Assignments - Peace Haven</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="employee-assignments.css">
+    <script src="employee-assignments.js"></script>
+</head>
+<body>
+    <header class="ph-header">
+        <div class="ph-nav-wrapper">
+            <a href="employee-dashboard.html" class="back-arrow">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+            <div class="ph-brand">
+                <div class="ph-logo">
+                    <img src="logo.jpg" alt="Logo">
+                </div>
+                <span>Peace Haven Corp</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="content">
+        <div class="assignments-container">
+            <div class="assignments-card">
+                <!-- Task Summary -->
+                <div class="task-summary">
+                    <div class="summary-card total">
+                        <span class="count">8</span>
+                        <span class="label">Total Tasks</span>
+                    </div>
+                    <div class="summary-card pending">
+                        <span class="count">5</span>
+                        <span class="label">Pending</span>
+                    </div>
+                    <div class="summary-card completed">
+                        <span class="count">3</span>
+                        <span class="label">Completed</span>
+                    </div>
+                </div>
+
+                <!-- Update the task filters and summary -->
+                <div class="filter-section">
+                    <select id="categoryFilter">
+                        <option value="all">All Categories</option>
+                        <option value="documentation">Documentation</option>
+                        <option value="reports">Reports</option>
+                        <option value="compliance">Compliance</option>
+                        <option value="training">Training</option>
+                    </select>
+                    <select id="priorityFilter">
+                        <option value="all">All Priority</option>
+                        <option value="high">High Priority</option>
+                        <option value="medium">Medium Priority</option>
+                        <option value="low">Low Priority</option>
+                    </select>
+                </div>
+
+                <!-- Tasks List -->
+                <div class="assignments-list">
+                    <!-- Pending Task -->
+                    <div class="assignment-item">
+                        <div class="assignment-header">
+                            <div class="task-info">
+                                <h3>Employee Handbook Acknowledgment</h3>
+                                <span class="assigned-by">
+                                    <i class="fas fa-user-tie"></i>
+                                    Assigned by HR
+                                </span>
+                                <span class="category documentation">Documentation</span>
+                            </div>
+                            <span class="priority high">High Priority</span>
+                        </div>
+                        <div class="assignment-details">
+                            <p class="description">Submit monthly performance and activity report.</p>
+                            <div class="meta-info">
+                                <span class="deadline">
+                                    <i class="fas fa-clock"></i>
+                                    Due: Oct 15, 2023
+                                </span>
+                                <span class="status pending">
+                                    <i class="fas fa-circle"></i>
+                                    Pending
+                                </span>
+                            </div>
+                        </div>
+                        <div class="assignment-actions">
+                            <button class="action-btn open-task">
+                                <i class="fas fa-folder-open"></i>
+                                Open Task
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Update the upload section -->
+                <div class="upload-section">
+                    <h2 class="section-title">Submit Completed Tasks</h2>
+                    <div class="upload-area">
+                        <div class="upload-box">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <h3>Upload Completed Task Files</h3>
+                            <p>Upload your completed work for HR verification</p>
+                            <button class="action-btn upload">
+                                <i class="fas fa-file-upload"></i>
+                                Choose Files
+                            </button>
+                            <p class="file-types">Accepted formats: PDF, DOC, DOCX</p>
+                        </div>
+                        <div class="upload-status">
+                            <h4>Recent Submissions</h4>
+                            <div class="status-list">
+                                <div class="status-item">
+                                    <div class="file-info">
+                                        <span class="file-name">Project_Report_Q3.pdf</span>
+                                        <span class="file-category">Reports</span>
+                                        <span class="submission-date">Submitted: Oct 12, 2023</span>
+                                    </div>
+                                    <span class="status pending">Under Review</span>
+                                </div>
+                                <div class="status-item">
+                                    <div class="file-info">
+                                        <span class="file-name">ID_Documents.pdf</span>
+                                        <span class="file-category">Documentation</span>
+                                        <span class="submission-date">Submitted: Oct 10, 2023</span>
+                                    </div>
+                                    <span class="status verified">Verified</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Meetings Section -->
+                <div class="meetings-section">
+                    <h2 class="section-title">Upcoming Company Presentations</h2>
+                    <div class="meetings-list">
+                        <div class="meeting-item">
+                            <div class="meeting-time">
+                                <span class="date">OCT 16</span>
+                                <span class="time">10:00 AM</span>
+                            </div>
+                            <div class="meeting-info">
+                                <h3>Quarterly Business Review</h3>
+                                <p class="meeting-desc">Company performance review and future strategies</p>
+                                <div class="meeting-meta">
+                                    <span class="location">
+                                        <i class="fas fa-building"></i>
+                                        Main Conference Hall
+                                    </span>
+                                    <span class="duration">
+                                        <i class="fas fa-clock"></i>
+                                        90 mins
+                                    </span>
+                                    <span class="presenter">
+                                        <i class="fas fa-user-tie"></i>
+                                        Presenter: CEO
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="meeting-actions">
+                                <button class="action-btn join">
+                                    <i class="fas fa-door-open"></i>
+                                    Attend Meeting
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add this modal structure at the bottom of your body tag, before scripts -->
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="task-title">Task Details</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="task-details">
+                    <div class="detail-row">
+                        <span class="label">Assigned By:</span>
+                        <span class="value assigned-by">HR Department</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Due Date:</span>
+                        <span class="value due-date">Oct 15, 2023</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Priority:</span>
+                        <span class="value priority">High</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Category:</span>
+                        <span class="value category">Documentation</span>
+                    </div>
+                </div>
+                <div class="task-description">
+                    <h3>Description</h3>
+                    <p id="taskDescription">Task description will appear here.</p>
+                </div>
+                <div class="task-requirements">
+                    <h3>Requirements</h3>
+                    <ul id="taskRequirements">
+                        <!-- Requirements will be populated dynamically -->
+                    </ul>
+                </div>
+                <div class="task-actions">
+                    <button class="action-btn start-task">
+                        <i class="fas fa-play"></i>
+                        Start Task
+                    </button>
+                    <button class="action-btn upload-files">
+                        <i class="fas fa-file-upload"></i>
+                        Upload Files
+                    </button>
+                    <button class="action-btn mark-complete">
+                        <i class="fas fa-check"></i>
+                        Mark as Complete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="employee-assignments.js"></script>
+</body>
+</html> 

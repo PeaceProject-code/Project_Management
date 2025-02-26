@@ -1,0 +1,179 @@
+:root {
+    --ph-primary: #2c3e50;
+    --ph-secondary: #3498db;
+    --ph-bg: #ecf0f1;
+    --ph-white: #ffffff;
+    --ph-dark: #2c3e50;
+}
+
+/* Professional Font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #f5f9ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Header Bar */
+.ph-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--ph-white);
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+/* Logo Wrapper */
+.ph-logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ph-logo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+}
+
+.ph-brand-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ph-primary);
+}
+
+/* Background */
+.ph-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--ph-bg), var(--ph-white));
+    opacity: 0.9;
+    z-index: -1;
+}
+
+/* Main Container */
+.ph-main-container {
+    text-align: center;
+    width: 90%;
+    max-width: 1000px;
+    margin-top: 80px;
+    color: var(--ph-dark);
+}
+
+/* Welcome Text */
+.ph-welcome {
+    font-size: 42px;
+    background: linear-gradient(to right, var(--ph-primary), var(--ph-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+
+/* Role Grid */
+.ph-role-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+/* Role Cards */
+.ph-role-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    padding: 30px;
+    width: 30%;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.ph-role-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 50%, #ffffff 100%);
+}
+
+/* Icon Box */
+.ph-icon-box {
+    width: 80px;
+    height: 80px;
+    background: #f0f7ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 auto 20px auto;
+}
+
+.ph-icon-box i {
+    font-size: 35px;
+    background: linear-gradient(45deg, var(--ph-primary), var(--ph-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Button */
+.ph-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 25px;
+    background: linear-gradient(45deg, var(--ph-primary), var(--ph-secondary));
+    color: var(--ph-white);
+    text-decoration: none;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.ph-button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(45deg, var(--ph-secondary), var(--ph-primary));
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .ph-role-grid {
+        flex-direction: column;
+    }
+    
+    .ph-role-card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .ph-header {
+        padding: 8px 15px;
+    }
+    
+    .ph-logo img {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .ph-brand-name {
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Communication</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="chat.css">
+    <script src="chat.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="ph-header">
+        <a href="employee-dashboard.html" class="ph-back-btn">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+        <div class="ph-brand">
+            <div class="ph-logo">
+                <img src="logo.jpg" alt="Logo">
+            </div>
+            <span>Peace Haven Corp</span>
+        </div>
+    </header>
+
+    <!-- Main Chat Container -->
+    <div class="chat-container">
+        <!-- Contacts List -->
+        <div class="contacts-list">
+            <!-- HR Section -->
+            <div class="contact-section">
+                <div class="contacts-header">
+                    <h2><i class="fas fa-user-tie"></i> HR Team</h2>
+                </div>
+                <div class="contact-items">
+                    <div class="contact-item">
+                        <div class="contact-avatar hr-avatar">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h3>HR Manager</h3>
+                            <p class="status">Online</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-avatar hr-avatar">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h3>HR Assistant</h3>
+                            <p class="status offline">Offline</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Employees Section -->
+            <div class="contact-section">
+                <div class="contacts-header">
+                    <h2><i class="fas fa-users"></i> Employees</h2>
+                </div>
+                <div class="contact-items">
+                    <div class="contact-item active">
+                        <div class="contact-avatar emp-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h3>John Smith</h3>
+                            <p class="designation">Software Developer</p>
+                            <p class="status">Online</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-avatar emp-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h3>Sarah Johnson</h3>
+                            <p class="designation">Project Manager</p>
+                            <p class="status">Online</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-avatar emp-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h3>Mike Wilson</h3>
+                            <p class="designation">UI Designer</p>
+                            <p class="status offline">Offline</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Area -->
+        <div class="chat-area">
+            <div class="messages-container">
+                <!-- HR Message -->
+                <div class="message assistant">
+                    <div class="message-avatar hr-avatar">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="message-content">
+                        Hello! How can I assist you today?
+                    </div>
+                </div>
+
+                <!-- Employee Message -->
+                <div class="message user">
+                    <div class="message-content">
+                        Hi! I need information about my leave balance.
+                    </div>
+                    <div class="message-avatar emp-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Message Input Area -->
+            <div class="message-input-area">
+                <input type="text" class="message-input" placeholder="Type your message...">
+                <button class="send-btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Peace Haven</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div class="ph-header">
+        <a href="home.html" class="ph-back-btn">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+        <div class="ph-logo-wrapper">
+            <div class="ph-logo">
+                <img src="logo.jpg" alt="Peace Haven Logo">
+            </div>
+            <div class="ph-brand-name">Peace Haven Corp</div>
+        </div>
+    </div>
+
+    <div class="ph-background"></div>
+    
+    <div class="ph-login-container">
+        <h2>Welcome Back</h2>
+        <form action="dashboard.html" method="POST" class="ph-login-form">
+            <div class="ph-input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+
+            <div class="ph-input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <a href="admin-dashboard.html" class="ph-login-btn">login</a>
+           
+        </form>
+    </div>
+</body>
+</html>

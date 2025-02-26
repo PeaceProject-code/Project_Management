@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark Attendance - Peace Haven</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <link rel="stylesheet" href="mark-attendance.css">
+    
+</head>
+<body>
+    <nav class="ph-header">
+        <a href="employee-dashboard.html" class="ph-back-btn">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+        <div class="ph-brand">
+            <img src="logo.jpg" alt="Peace Haven Logo" class="ph-logo">
+            <span>Peace Haven Corp</span>
+        </div>
+    </nav>
+
+    <div class="attendance-container">
+        <div class="attendance-card">
+            <h1 class="attendance-title">Mark Attendance</h1>
+            
+            <div class="time-display">
+                <div class="current-time" id="currentTime">00:00:00 AM</div>
+                <div class="current-date" id="currentDate">Monday, March 25, 2024</div>
+            </div>
+
+            <div class="status-display" id="statusDisplay">
+                Not Checked In
+            </div>
+
+            <div class="button-container">
+                <button id="checkInBtn" class="attendance-btn check-in" onclick="markAttendance('in')">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Check In
+                </button>
+                <button id="checkOutBtn" class="attendance-btn check-out" onclick="markAttendance('out')" disabled>
+                    <i class="fas fa-sign-out-alt"></i>
+                    Check Out
+                </button>
+            </div>
+
+            <div class="today-record">
+                <h2>Today's Record</h2>
+                <div class="record-grid">
+                    <div class="record-item">
+                        <label>Check In Time</label>
+                        <div id="checkInTime">-</div>
+                    </div>
+                    <div class="record-item">
+                        <label>Check Out Time</label>
+                        <div id="checkOutTime">-</div>
+                    </div>
+                    <div class="record-item">
+                        <label>Working Hours</label>
+                        <div id="workingHours">-</div>
+                    </div>
+                    <div class="record-item">
+                        <label>Status</label>
+                        <div id="attendanceStatus">-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="mark-attendance.js"></script>
+</body>
+</html>

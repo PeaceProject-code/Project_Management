@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Requests - HR Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="hr-leave-requests.css">
+</head>
+<body>
+    <header class="ph-header">
+        <div class="ph-nav-wrapper">
+            <a href="hr-dashboard.html" class="back-arrow">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+            <div class="ph-brand">
+                <div class="ph-logo">
+                    <img src="logo.jpg" alt="Logo">
+                </div>
+                <span>Peace Haven Corp</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="leave-container">
+        <div class="leave-card">
+            <h1 class="leave-title">Leave Requests</h1>
+            
+            <div class="requests-list pending-requests">
+                <h2 class="section-title">Pending Requests</h2>
+                <div class="request-item pending">
+                    <div class="request-header">
+                        <div class="employee-name">John Doe</div>
+                        <div class="request-status pending">Pending</div>
+                    </div>
+                    <div class="request-details">
+                        <div class="detail-row">
+                            <span>Leave Type:</span>
+                            <span>Annual Leave</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Duration:</span>
+                            <span>25 Mar - 28 Mar (4 days)</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Reason:</span>
+                            <span>Family vacation planned for next week.</span>
+                        </div>
+                    </div>
+                    <div class="request-actions">
+                        <button class="action-btn approve">Approve</button>
+                        <button class="action-btn reject">Reject</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="requests-list viewed-requests">
+                <h2 class="section-title">Viewed List</h2>
+                <!-- Viewed requests will be moved here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="hr-leave-requests.js"></script>
+</body>
+</html> 

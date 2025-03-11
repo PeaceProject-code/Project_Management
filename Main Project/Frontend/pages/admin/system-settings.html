@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Settings - Peace Haven</title>
+    <link rel="stylesheet" href="../../styles/common/home.css">
+    <link rel="stylesheet" href="../../styles/common/dashboard.css">
+    <link rel="stylesheet" href="../../styles/admin/system-settings.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <header class="ph-header">
+        <div class="ph-nav-wrapper">
+            <a href="../../pages/admin/admin-dashboard.html" class="back-arrow">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+            <div class="ph-brand">
+                <div class="ph-logo">
+                    <img src="../../assests/images/logo.jpg" alt="Logo">
+                </div>
+                <span>Peace Haven Corp</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="ph-dashboard-container">
+        <h1 class="ph-dashboard-title">System Settings</h1>
+        
+        <div class="ph-card-grid">
+            <div class="ph-card">
+                <i class="fas fa-cogs"></i>
+                <h3>General Settings</h3>
+                <button class="ph-card-btn" onclick="showSettingsSection('general')">Configure</button>
+            </div>
+
+            <div class="ph-card">
+                <i class="fas fa-lock"></i>
+                <h3>Security Settings</h3>
+                <button class="ph-card-btn" onclick="showSettingsSection('security')">Manage Security</button>
+            </div>
+
+            <div class="ph-card">
+                <i class="fas fa-database"></i>
+                <h3>Data Management</h3>
+                <button class="ph-card-btn" onclick="showSettingsSection('data')">Backup Data</button>
+            </div>
+        </div>
+
+        <div class="settings-panel" id="general-settings" style="display: none;">
+            <h2>General Settings</h2>
+            <div class="settings-section">
+                <h3>Appearance</h3>
+                <div class="setting-item">
+                    <span>Dark Mode</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="darkModeToggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <span>Font Size</span>
+                    <select class="select-box" id="fontSizeSelect">
+                        <option value="small">Small</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="large">Large</option>
+                    </select>
+                </div>
+            </div>
+            <div class="settings-section">
+                <h3>Notifications</h3>
+                <div class="setting-item">
+                    <span>Email Notifications</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="emailNotificationToggle" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <span>In-App Notifications</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="appNotificationToggle" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="settings-section">
+                <h3>System Preferences</h3>
+                <div class="setting-item">
+                    <span>Language</span>
+                    <select class="select-box" id="languageSelect">
+                        <option value="en" selected>English</option>
+                        <option value="es">Spanish</option>
+                        <option value="fr">French</option>
+                        <option value="de">German</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <span>Time Zone</span>
+                    <select class="select-box" id="timezoneSelect">
+                        <option value="UTC-8">Pacific Time (UTC-8)</option>
+                        <option value="UTC-5">Eastern Time (UTC-5)</option>
+                        <option value="UTC+0" selected>UTC</option>
+                        <option value="UTC+1">Central European Time (UTC+1)</option>
+                        <option value="UTC+8">China Standard Time (UTC+8)</option>
+                    </select>
+                </div>
+            </div>
+            <button class="save-btn" id="saveGeneralSettings">Save Changes</button>
+        </div>
+
+        <div class="settings-panel" id="security-settings" style="display: none;">
+            <h2>Security Settings</h2>
+            <div class="settings-section">
+                <h3>User Credentials</h3>
+                <div class="setting-item">
+                    <span>Username</span>
+                    <input type="text" id="usernameInput" class="input-field" placeholder="Current username">
+                </div>
+                <div class="setting-item">
+                    <span>Change Password</span>
+                    <button class="secondary-btn" id="changePasswordBtn">Change Password</button>
+                </div>
+                <div id="passwordChangeForm" style="display: none; margin-top: 15px;">
+                    <div class="setting-item">
+                        <span>Current Password</span>
+                        <input type="password" id="currentPassword" class="input-field">
+                    </div>
+                    <div class="setting-item">
+                        <span>New Password</span>
+                        <input type="password" id="newPassword" class="input-field">
+                    </div>
+                    <div class="setting-item">
+                        <span>Confirm New Password</span>
+                        <input type="password" id="confirmPassword" class="input-field">
+                    </div>
+                    <div class="password-strength" id="passwordStrength">
+                        <div class="strength-bar">
+                            <div class="strength-indicator" id="strengthIndicator"></div>
+                        </div>
+                        <span id="strengthText">Password strength</span>
+                    </div>
+                    <div class="button-group">
+                        <button class="secondary-btn" id="cancelPasswordChange">Cancel</button>
+                        <button class="primary-btn" id="savePasswordChange">Save Password</button>
+                    </div>
+                </div>
+            </div>
+            <div class="settings-section">
+                <h3>Account Security</h3>
+                <div class="setting-item">
+                    <span>Two-Factor Authentication</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="twoFactorToggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div id="twoFactorSetup" style="display: none; margin-top: 15px;">
+                    <p>Scan this QR code with your authenticator app:</p>
+                    <div class="qr-placeholder">QR Code would be displayed here</div>
+                    <div class="setting-item">
+                        <span>Verification Code</span>
+                        <input type="text" id="verificationCode" class="input-field" placeholder="Enter 6-digit code">
+                    </div>
+                    <button class="secondary-btn" id="verifyTwoFactorBtn">Verify & Enable</button>
+                </div>
+                <div class="setting-item">
+                    <span>Password Expiry (days)</span>
+                    <select class="select-box" id="passwordExpirySelect">
+                        <option value="30">30 days</option>
+                        <option value="60">60 days</option>
+                        <option value="90" selected>90 days</option>
+                        <option value="never">Never</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <span>Login Notification</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="loginNotificationToggle" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="settings-section">
+                <h3>Session Settings</h3>
+                <div class="setting-item">
+                    <span>Auto Logout After Inactivity</span>
+                    <select class="select-box" id="autoLogoutSelect">
+                        <option value="5">5 minutes</option>
+                        <option value="15">15 minutes</option>
+                        <option value="30" selected>30 minutes</option>
+                        <option value="60">60 minutes</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <span>Active Sessions</span>
+                    <button class="secondary-btn" id="viewSessionsBtn">View & Manage</button>
+                </div>
+                <div id="activeSessions" style="display: none; margin-top: 15px;">
+                    <div class="session-item">
+                        <div class="session-info">
+                            <span class="device-name">Windows 10 - Chrome</span>
+                            <span class="session-details">IP: 192.168.1.1 • Last active: Now</span>
+                        </div>
+                        <span class="current-session">Current Session</span>
+                    </div>
+                    <div class="session-item">
+                        <div class="session-info">
+                            <span class="device-name">iPhone 14 - Safari</span>
+                            <span class="session-details">IP: 175.45.176.2 • Last active: Yesterday</span>
+                        </div>
+                        <button class="danger-btn">Terminate</button>
+                    </div>
+                    <div class="session-item">
+                        <div class="session-info">
+                            <span class="device-name">iPad - Safari</span>
+                            <span class="session-details">IP: 82.19.65.32 • Last active: 3 days ago</span>
+                        </div>
+                        <button class="danger-btn">Terminate</button>
+                    </div>
+                    <button class="danger-btn" id="terminateAllBtn">Terminate All Other Sessions</button>
+                </div>
+            </div>
+            <div class="settings-section">
+                <h3>Login History</h3>
+                <div class="setting-item">
+                    <span>Recent Login Activity</span>
+                    <button class="secondary-btn" id="viewLoginHistoryBtn">View History</button>
+                </div>
+                <div id="loginHistory" style="display: none; margin-top: 15px;">
+                    <div class="history-table">
+                        <div class="table-header">
+                            <div class="col">Date & Time</div>
+                            <div class="col">IP Address</div>
+                            <div class="col">Device</div>
+                            <div class="col">Status</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="col">2025-02-28 09:15 AM</div>
+                            <div class="col">192.168.1.1</div>
+                            <div class="col">Windows 10 - Chrome</div>
+                            <div class="col success">Success</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="col">2025-02-27 03:42 PM</div>
+                            <div class="col">175.45.176.2</div>
+                            <div class="col">iPhone 14 - Safari</div>
+                            <div class="col success">Success</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="col">2025-02-25 11:22 AM</div>
+                            <div class="col">82.19.65.32</div>
+                            <div class="col">iPad - Safari</div>
+                            <div class="col success">Success</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="col">2025-02-24 08:05 PM</div>
+                            <div class="col">91.223.45.67</div>
+                            <div class="col">Unknown</div>
+                            <div class="col failure">Failed</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="save-btn" id="saveSecuritySettings">Save Changes</button>
+        </div>
+
+        <div class="settings-panel" id="data-settings" style="display: none;">
+            <h2>Data Management</h2>
+            <div class="settings-section">
+                <h3>Backup Settings</h3>
+                <div class="setting-item">
+                    <span>Automatic Backups</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="autoBackupToggle" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <span>Backup Frequency</span>
+                    <select class="select-box" id="backupFrequencySelect">
+                        <option value="daily">Daily</option>
+                        <option value="weekly" selected>Weekly</option>
+                        <option value="monthly">Monthly</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <span>Backup Storage Location</span>
+                    <select class="select-box" id="backupLocationSelect">
+                        <option value="local" selected>Local Server</option>
+                        <option value="cloud">Cloud Storage</option>
+                        <option value="both">Both (Recommended)</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <span>Encryption Level</span>
+                    <select class="select-box" id="encryptionLevelSelect">
+                        <option value="standard">Standard (AES-128)</option>
+                        <option value="high" selected>High (AES-256)</option>
+                        <option value="maximum">Maximum (AES-256 + Custom Key)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="settings-section">
+                <h3>Data Retention</h3>
+                <div class="setting-item">
+                    <span>Keep User Data For</span>
+                    <select class="select-box" id="dataRetentionSelect">
+                        <option value="1">1 year</option>
+                        <option value="3" selected>3 years</option>
+                        <option value="5">5 years</option>
+                        <option value="10">10 years</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <span>Archive Old Data</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="archiveDataToggle" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <span>Data Compliance Mode</span>
+                    <select class="select-box" id="complianceModeSelect">
+                        <option value="gdpr">GDPR Compliance</option>
+                        <option value="hipaa">HIPAA Compliance</option>
+                        <option value="pci">PCI DSS Compliance</option>
+                        <option value="custom" selected>Custom Policy</option>
+                    </select>
+                </div>
+            </div>
+            <div class="settings-section">
+                <h3>Previous Backups</h3>
+                <div class="backup-history">
+                    <div class="backup-item">
+                        <div class="backup-info">
+                            <span class="backup-date">2025-02-27 02:00 AM</span>
+                            <span class="backup-size">1.2 GB</span>
+                        </div>
+                        <div class="backup-actions">
+                            <button class="secondary-btn">Restore</button>
+                            <button class="secondary-btn">Download</button>
+                        </div>
+                    </div>
+                    <div class="backup-item">
+                        <div class="backup-info">
+                            <span class="backup-date">2025-02-20 02:00 AM</span>
+                            <span class="backup-size">1.1 GB</span>
+                        </div>
+                        <div class="backup-actions">
+                            <button class="secondary-btn">Restore</button>
+                            <button class="secondary-btn">Download</button>
+                        </div>
+                    </div>
+                    <div class="backup-item">
+                        <div class="backup-info">
+                            <span class="backup-date">2025-02-13 02:00 AM</span>
+                            <span class="backup-size">1.0 GB</span>
+                        </div>
+                        <div class="backup-actions">
+                            <button class="secondary-btn">Restore</button>
+                            <button class="secondary-btn">Download</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="settings-section">
+                <h3>Manual Backup</h3>
+                <button class="ph-card-btn" style="margin: 10px auto;" id="manualBackupBtn">Start Backup Now</button>
+                <div id="backupStatus" style="text-align: center; margin-top: 10px;"></div>
+            </div>
+            <button class="save-btn" id="saveDataSettings">Save Changes</button>
+        </div>
+    </div>
+
+    <script src="../../js/admin/system-settings.js"></script>
+</body>
+</html>

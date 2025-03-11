@@ -1,0 +1,377 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    background-color: #f5f7fa;
+    min-height: 100vh;
+}
+
+.ph-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #1a3c61;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ph-nav-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.back-arrow {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    padding: 8px;
+    margin-left: -8px;
+    transition: transform 0.2s;
+}
+
+.back-arrow:hover {
+    transform: translateX(-3px);
+}
+
+.back-arrow i {
+    font-size: 1.1rem;
+}
+
+.ph-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.ph-logo {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+}
+
+.ph-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.ph-brand span {
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+}
+:root {
+    --primary-blue: #336699;      /* Dark blue for buttons */
+    --icon-blue: #336699;         /* Blue for icons */
+    --hover-blue: #245180;        /* Darker blue for hover states */
+    --text-color: #333333;        /* Dark gray for text */
+    --card-bg: #FFFFFF;           /* White background for cards */
+    --body-bg: #F5F5F5;          /* Light gray background */
+    --border-color: #E0E0E0;      /* Light gray for borders */
+}
+
+body.dark-mode {
+    --ph-primary: #64b5f6;
+    --ph-secondary: #81c784;
+    --ph-background: #222;
+    --ph-text: #f0f0f0;
+    --ph-card-bg: #333;
+    --ph-border: #444;
+}
+
+body {
+    background-color: var(--body-bg);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.ph-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+}
+
+.ph-card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.ph-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.ph-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.ph-card.active-card {
+    border: 2px solid var(--primary-blue);
+    transform: translateY(-5px);
+}
+
+.ph-card i {
+    font-size: 32px;
+    margin-bottom: 15px;
+    background: linear-gradient(45deg, var(--primary-blue), var(--icon-blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.ph-card h3 {
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.ph-card-btn, .back-to-settings-btn {
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    display: inline-block;
+    margin: 10px 0;
+}
+
+.ph-card-btn:hover, .back-to-settings-btn:hover {
+    background-color: var(--hover-blue);
+}
+
+.settings-panel {
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    padding: 30px;
+    margin: 40px auto;
+    max-width: 800px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.settings-section {
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 20px;
+}
+
+.settings-section:last-child {
+    border-bottom: none;
+}
+
+.settings-section h3 {
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+}
+
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--primary-blue);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.select-box {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+.save-btn {
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    width: 100%;
+    max-width: 200px;
+    margin: 2rem auto 0;
+}
+
+.save-btn:hover {
+    background-color: var(--hover-blue);
+}
+
+/* Page transition animations */
+.page-enter {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.page-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.page-exit {
+    opacity: 1;
+}
+
+.page-exit-active {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 300ms, transform 300ms;
+}
+
+@media (max-width: 768px) {
+    .ph-card-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .ph-card {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+    
+    .settings-panel {
+        padding: 20px;
+        width: 90%;
+    }
+    
+    .setting-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .toggle-switch, .select-box {
+        margin-top: 10px;
+    }
+}
+
+/* Secondary Button Style */
+.secondary-btn {
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.secondary-btn:hover {
+    background-color: var(--hover-blue);
+}
+
+/* Danger Button */
+.danger-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.danger-btn:hover {
+    background-color: #c82333;
+}
+
+/* Success Status Color */
+.success {
+    color: #28a745;
+}
+
+/* Failure Status Color */
+.failure {
+    color: #dc3545;
+}
+
+/* Link Colors */
+a {
+    color: var(--primary-blue);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--hover-blue);
+}
+
+/* Table Headers */
+.table-header {
+    background-color: var(--primary-blue);
+    color: white;
+}

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Employees - Peace Haven</title>
+    <link rel="stylesheet" href="../../styles/common/home.css">
+    <link rel="stylesheet" href="../../styles/common/dashboard.css">
+    <link rel="stylesheet" href="../../styles/admin/manage-employees.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <header class="ph-header">
+        <div class="ph-nav-wrapper">
+            <a href="../../pages/admin/admin-dashboard.html" class="back-arrow">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+            <div class="ph-brand">
+                <div class="ph-logo">
+                    <img src="../../assests/images/logo.jpg" alt="Logo">
+                </div>
+                <span>Peace Haven Corp</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="ph-dashboard-container">
+        <h1 class="ph-dashboard-title">Manage Employees</h1>
+        
+        <div class="ph-search-bar">
+            <input type="text" id="employeeSearch" placeholder="Search employees...">
+            <button id="searchBtn"><i class="fas fa-search"></i></button>
+        </div>
+        
+        <div class="ph-card-grid">
+            <div class="ph-card" id="addEmployeeCard">
+                <i class="fas fa-user-plus"></i>
+                <h3>Add New Employee</h3>
+                <button class="ph-card-btn" id="addEmployeeBtn">Add Employee</button>
+            </div>
+
+            <div class="ph-card" id="editEmployeeCard">
+                <i class="fas fa-user-edit"></i>
+                <h3>Edit Employee Details</h3>
+                <button class="ph-card-btn" id="editEmployeeBtn">Edit Employee</button>
+            </div>
+
+            <div class="ph-card" id="removeEmployeeCard">
+                <i class="fas fa-user-times"></i>
+                <h3>Remove Employee</h3>
+                <button class="ph-card-btn" id="removeEmployeeBtn">Remove Employee</button>
+            </div>
+        </div>
+        
+        <!-- Employee List Section -->
+        <div class="ph-employee-list-section">
+            <h2>Employee Directory</h2>
+            <div class="ph-employee-filters">
+                <select id="departmentFilter">
+                    <option value="">All Departments</option>
+                    <option value="hr">Human Resources</option>
+                    <option value="nursing">Nursing</option>
+                    <option value="admin">Administration</option>
+                    <option value="facilities">Facilities</option>
+                </select>
+                <select id="statusFilter">
+                    <option value="">All Statuses</option>
+                    <option value="active">Active</option>
+                    <option value="onleave">On Leave</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+            </div>
+            <table class="ph-employee-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Position</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="employeeTableBody">
+                    <!-- Table rows will be populated by JavaScript -->
+                </tbody>
+            </table>
+            <div class="ph-pagination">
+                <button id="prevPage" disabled><i class="fas fa-chevron-left"></i> Previous</button>
+                <span id="pageInfo">Page 1 of 1</span>
+                <button id="nextPage" disabled>Next <i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Add Employee -->
+    <div id="addEmployeeModal" class="ph-modal">
+        <div class="ph-modal-content">
+            <div class="ph-modal-header">
+                <h2>Add New Employee</h2>
+                <span class="ph-close-modal">&times;</span>
+            </div>
+            <div class="ph-modal-body">
+                <form id="addEmployeeForm">
+                    <div class="ph-form-group">
+                        <label for="employeeName">Full Name*</label>
+                        <input type="text" id="employeeName" required>
+                    </div>
+                    <div class="ph-form-group">
+                        <label for="employeeEmail">Email*</label>
+                        <input type="email" id="employeeEmail" required>
+                    </div>
+                    <div class="ph-form-group">
+                        <label for="employeePhone">Phone Number*</label>
+                        <input type="tel" id="employeePhone" required>
+                    </div>
+                    <div class="ph-form-row">
+                        <div class="ph-form-group">
+                            <label for="employeeDepartment">Department*</label>
+                            <select id="employeeDepartment" required>
+                                <option value="">Select Department</option>
+                                <option value="hr">Human Resources</option>
+                                <option value="nursing">Nursing</option>
+                                <option value="admin">Administration</option>
+                                <option value="facilities">Facilities</option>
+                            </select>
+                        </div>
+                        <div class="ph-form-group">
+                            <label for="employeePosition">Position*</label>
+                            <input type="text" id="employeePosition" required>
+                        </div>
+                    </div>
+                    <div class="ph-form-group">
+                        <label for="employeeStartDate">Start Date*</label>
+                        <input type="date" id="employeeStartDate" required>
+                    </div>
+                    <div class="ph-form-group">
+                        <label for="employeeStatus">Status*</label>
+                        <select id="employeeStatus" required>
+                            <option value="active">Active</option>
+                            <option value="onleave">On Leave</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
+                    <div class="ph-form-group">
+                        <label for="employeeNotes">Additional Notes</label>
+                        <textarea id="employeeNotes" rows="3"></textarea>
+                    </div>
+                    <div class="ph-form-buttons">
+                        <button type="button" class="ph-cancel-btn">Cancel</button>
+                        <button type="submit" class="ph-submit-btn">Add Employee</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Edit Employee -->
+    <div id="editEmployeeModal" class="ph-modal">
+        <div class="ph-modal-content">
+            <div class="ph-modal-header">
+                <h2>Edit Employee Details</h2>
+                <span class="ph-close-modal">&times;</span>
+            </div>
+            <div class="ph-modal-body">
+                <form id="editEmployeeForm">
+                    <input type="hidden" id="editEmployeeId">
+                    <div class="ph-form-group">
+                        <label for="editEmployeeName">Full Name*</label>
+                        <input type="text" id="editEmployeeName" required>
+                    </div>
+                    <div class="ph-form-group">
+                        <label for="editEmployeeEmail">Email*</label>
+                        <input type="email" id="editEmployeeEmail" required>
+                    </div>
+                    <div class="ph-form-group">
+                        <label for="editEmployeePhone">Phone Number*</label>
+                        <input type="tel" id="editEmployeePhone" required>
+                    </div>
+                    <div class="ph-form-row">
+                        <div class="ph-form-group">
+                            <label for="editEmployeeDepartment">Department*</label>
+                            <select id="editEmployeeDepartment" required>
+                                <option value="">Select Department</option>
+                                <option value="hr">Human Resources</option>
+                                <option value="nursing">Nursing</option>
+                                <option value="admin">Administration</option>
+                                <option value="facilities">Facilities</option>
+                            </select>
+                        </div>
+                        <div class="ph-form-group">
+                            <label for="editEmployeePosition">Position*</label>
+                            <input type="text" id="editEmployeePosition" required>
+                        </div>
+                    </div>
+                    <div class="ph-form-group">
+                        <label for="editEmployeeStartDate">Start Date*</label>
+                        <input type="date" id="editEmployeeStartDate" required>
+                    </div>
+                    <div class="ph-form-group">
+                        <label for="editEmployeeStatus">Status*</label>
+                        <select id="editEmployeeStatus" required>
+                            <option value="active">Active</option>
+                            <option value="onleave">On Leave</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
+                    <div class="ph-form-group">
+                        <label for="editEmployeeNotes">Additional Notes</label>
+                        <textarea id="editEmployeeNotes" rows="3"></textarea>
+                    </div>
+                    <div class="ph-form-buttons">
+                        <button type="button" class="ph-cancel-btn">Cancel</button>
+                        <button type="submit" class="ph-submit-btn">Update Employee</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Remove Employee -->
+    <div id="removeEmployeeModal" class="ph-modal">
+        <div class="ph-modal-content ph-modal-sm">
+            <div class="ph-modal-header">
+                <h2>Remove Employee</h2>
+                <span class="ph-close-modal">&times;</span>
+            </div>
+            <div class="ph-modal-body">
+                <p>Are you sure you want to remove <span id="removeEmployeeName">this employee</span>?</p>
+                <input type="hidden" id="removeEmployeeId">
+                <div class="ph-form-buttons">
+                    <button type="button" class="ph-cancel-btn">Cancel</button>
+                    <button type="button" class="ph-delete-btn" id="confirmRemoveBtn">Remove</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/admin/manage-employees.js"></script>
+</body>
+</html>

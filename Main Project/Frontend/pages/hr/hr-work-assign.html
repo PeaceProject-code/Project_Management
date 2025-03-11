@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Assignment - HR Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../../styles/hr/hr-work-assign.css">
+</head>
+<body>
+    <header class="ph-header">
+        <div class="ph-nav-wrapper">
+            <a href="../../pages/hr/hr-dashboard.html" class="back-arrow">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+            <div class="ph-brand">
+                <div class="ph-logo">
+                    <img src="../../assests/images/logo.jpg" alt="Logo">
+                </div>
+                <span>Peace Haven Corp</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="work-container">
+        <div class="work-header">
+            <h2>Work Assignment Management</h2>
+            <button class="assign-btn" onclick="openAssignModal()">
+                <i class="fas fa-plus"></i> Assign New Work
+            </button>
+        </div>
+
+        <div class="filters">
+            <div class="filter-group">
+                <label for="employeeFilter">Employee:</label>
+                <select id="employeeFilter">
+                    <option value="all">All Employees</option>
+                    <option value="john">John Smith</option>
+                    <option value="sarah">Sarah Johnson</option>
+                    <option value="mike">Mike Wilson</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="statusFilter">Status:</label>
+                <select id="statusFilter">
+                    <option value="all">All Status</option>
+                    <option value="pending">Pending</option>
+                    <option value="in-progress">In Progress</option>
+                    <option value="completed">Completed</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="dateFilter">Date:</label>
+                <input type="date" id="dateFilter">
+            </div>
+        </div>
+
+        <div class="work-list">
+            <!-- Work cards will be dynamically added here -->
+        </div>
+    </div>
+
+    <!-- Assign Work Modal -->
+    <div id="assignModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Assign New Work</h3>
+                <span class="close" onclick="closeAssignModal()">&times;</span>
+            </div>
+            <form id="assignForm">
+                <div class="form-group">
+                    <label for="assignEmployee">Assign to:</label>
+                    <select id="assignEmployee" required>
+                        <option value="">Select Employee</option>
+                        <option value="john">John Smith</option>
+                        <option value="sarah">Sarah Johnson</option>
+                        <option value="mike">Mike Wilson</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="workTitle">Work Title:</label>
+                    <input type="text" id="workTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="workDescription">Description:</label>
+                    <textarea id="workDescription" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="deadline">Deadline:</label>
+                    <input type="datetime-local" id="deadline" required>
+                </div>
+                <div class="form-group">
+                    <label for="priority">Priority:</label>
+                    <select id="priority" required>
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="cancel-btn" onclick="closeAssignModal()">Cancel</button>
+                    <button type="submit" class="submit-btn">Assign Work</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../../js/hr/hr-work-assign.js"></script>
+</body>
+</html> 

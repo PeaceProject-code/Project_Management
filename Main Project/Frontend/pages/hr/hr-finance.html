@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Management - HR Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../../styles/hr/hr-finance.css">
+</head>
+<body>
+    <header class="ph-header">
+        <div class="ph-nav-wrapper">
+            <a href="../../pages/hr/hr-dashboard.html" class="back-arrow">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+            <div class="ph-brand">
+                <div class="ph-logo">
+                    <img src="../../assests/images/logo.jpg" alt="Logo">
+                </div>
+                <span>Peace Haven Corp</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="finance-container">
+        <!-- Financial Overview Section -->
+        <div class="finance-section">
+            <h2 class="section-title">Financial Overview</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <i class="fas fa-wallet"></i>
+                    <h3>Total Budget</h3>
+                    <div class="stat-value">$150,000</div>
+                    <div class="stat-period">This Month</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3>Total Expenses</h3>
+                    <div class="stat-value">$98,500</div>
+                    <div class="stat-period">This Month</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Remaining Budget</h3>
+                    <div class="stat-value">$51,500</div>
+                    <div class="stat-period">This Month</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Employee Count</h3>
+                    <div class="stat-value">125</div>
+                    <div class="stat-period">Active</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Expense Categories Section -->
+        <div class="finance-section">
+            <h2 class="section-title">Expense Categories</h2>
+            <div class="expense-categories-grid">
+                <div class="expense-card">
+                    <div class="expense-icon">
+                        <i class="fas fa-money-check-alt"></i>
+                    </div>
+                    <h3>Salary</h3>
+                    <p>Manage employee salaries, bonuses, and deductions</p>
+                    <div class="expense-stats">
+                        <div class="stat">
+                            <span class="label">Monthly Budget</span>
+                            <span class="value">$85,000</span>
+                        </div>
+                        <div class="stat">
+                            <span class="label">Spent</span>
+                            <span class="value">$82,500</span>
+                        </div>
+                    </div>
+                    <button class="manage-btn" data-modal="salaryModal">
+                        Manage Salaries
+                    </button>
+                </div>
+
+                <div class="expense-card">
+                    <div class="expense-icon">
+                        <i class="fas fa-glass-cheers"></i>
+                    </div>
+                    <h3>Entertainment</h3>
+                    <p>Track company events and entertainment expenses</p>
+                    <div class="expense-stats">
+                        <div class="stat">
+                            <span class="label">Monthly Budget</span>
+                            <span class="value">$5,000</span>
+                        </div>
+                        <div class="stat">
+                            <span class="label">Spent</span>
+                            <span class="value">$3,200</span>
+                        </div>
+                    </div>
+                    <button class="manage-btn" data-modal="entertainmentModal">
+                        Manage Entertainment
+                    </button>
+                </div>
+
+                <div class="expense-card">
+                    <div class="expense-icon">
+                        <i class="fas fa-receipt"></i>
+                    </div>
+                    <h3>Reimbursement</h3>
+                    <p>Process and track employee reimbursement claims</p>
+                    <div class="expense-stats">
+                        <div class="stat">
+                            <span class="label">Monthly Budget</span>
+                            <span class="value">$10,000</span>
+                        </div>
+                        <div class="stat">
+                            <span class="label">Spent</span>
+                            <span class="value">$7,800</span>
+                        </div>
+                    </div>
+                    <button class="manage-btn" data-modal="reimbursementModal">
+                        Manage Reimbursements
+                    </button>
+                </div>
+
+                <div class="expense-card">
+                    <div class="expense-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Food & Travel</h3>
+                    <p>Manage food allowances and travel expenses</p>
+                    <div class="expense-stats">
+                        <div class="stat">
+                            <span class="label">Monthly Budget</span>
+                            <span class="value">$15,000</span>
+                        </div>
+                        <div class="stat">
+                            <span class="label">Spent</span>
+                            <span class="value">$12,500</span>
+                        </div>
+                    </div>
+                    <button class="manage-btn" data-modal="foodTravelModal">
+                        Manage Food & Travel
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Transactions Section -->
+        <div class="finance-section">
+            <h2 class="section-title">Recent Transactions</h2>
+            <div class="table-container">
+                <table class="finance-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Category</th>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recentTransactionsBody">
+                        <!-- Will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Salary Management Modal -->
+    <div id="salaryModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Salary Management</h2>
+                <button class="close-btn" onclick="closeModal('salaryModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="action-bar">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search employee...">
+                    </div>
+                    <button class="add-btn" onclick="openAddSalaryForm()">
+                        <i class="fas fa-plus"></i> Add New Record
+                    </button>
+                </div>
+                <div class="table-container">
+                    <table class="finance-table">
+                        <thead>
+                            <tr>
+                                <th>Employee Name</th>
+                                <th>Employee ID</th>
+                                <th>Basic Salary</th>
+                                <th>Allowances</th>
+                                <th>Deductions</th>
+                                <th>Net Salary</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="salaryTableBody">
+                            <!-- Will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Entertainment Management Modal -->
+    <div id="entertainmentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Entertainment Expenses</h2>
+                <button class="close-btn" onclick="closeModal('entertainmentModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="action-bar">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search events...">
+                    </div>
+                    <button class="add-btn" onclick="openAddEntertainmentForm()">
+                        <i class="fas fa-plus"></i> Add New Event
+                    </button>
+                </div>
+                <div class="table-container">
+                    <table class="finance-table">
+                        <thead>
+                            <tr>
+                                <th>Event Name</th>
+                                <th>Date</th>
+                                <th>Venue</th>
+                                <th>Participants</th>
+                                <th>Budget</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="entertainmentTableBody">
+                            <!-- Will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reimbursement Management Modal -->
+    <div id="reimbursementModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Reimbursement Claims</h2>
+                <button class="close-btn" onclick="closeModal('reimbursementModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="action-bar">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search claims...">
+                    </div>
+                    <button class="add-btn" onclick="openAddReimbursementForm()">
+                        <i class="fas fa-plus"></i> Add New Claim
+                    </button>
+                </div>
+                <div class="table-container">
+                    <table class="finance-table">
+                        <thead>
+                            <tr>
+                                <th>Employee</th>
+                                <th>Claim Date</th>
+                                <th>Category</th>
+                                <th>Description</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reimbursementTableBody">
+                            <!-- Will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Food & Travel Management Modal -->
+    <div id="foodTravelModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Food & Travel Expenses</h2>
+                <button class="close-btn" onclick="closeModal('foodTravelModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="action-bar">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search expenses...">
+                    </div>
+                    <button class="add-btn" onclick="openAddFoodTravelForm()">
+                        <i class="fas fa-plus"></i> Add New Expense
+                    </button>
+                </div>
+                <div class="table-container">
+                    <table class="finance-table">
+                        <thead>
+                            <tr>
+                                <th>Employee</th>
+                                <th>Date</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                                <th>Location</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="foodTravelTableBody">
+                            <!-- Will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Salary Modal -->
+    <div id="addSalaryModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Salary Record</h2>
+                <button class="close-btn" onclick="closeModal('addSalaryModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="addSalaryForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="employeeName">Employee Name</label>
+                            <input type="text" id="employeeName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="employeeId">Employee ID</label>
+                            <input type="text" id="employeeId" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="basicSalary">Basic Salary</label>
+                            <input type="text" id="basicSalary" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="allowances">Allowances</label>
+                            <input type="text" id="allowances" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="deductions">Deductions</label>
+                            <input type="text" id="deductions" class="form-control">
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-secondary" onclick="closeModal('addSalaryModal')">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Record</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Entertainment Modal -->
+    <div id="addEntertainmentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Entertainment Event</h2>
+                <button class="close-btn" onclick="closeModal('addEntertainmentModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="addEntertainmentForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="eventName">Event Name</label>
+                            <input type="text" id="eventName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="eventDate">Event Date</label>
+                            <input type="date" id="eventDate" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="venue">Venue</label>
+                            <input type="text" id="venue" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="participants">Number of Participants</label>
+                            <input type="number" id="participants" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="budget">Budget</label>
+                            <input type="text" id="budget" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="eventStatus">Status</label>
+                            <select id="eventStatus" class="form-control">
+                                <option value="Pending">Pending</option>
+                                <option value="Approved">Approved</option>
+                                <option value="Completed">Completed</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-secondary" onclick="closeModal('addEntertainmentModal')">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Event</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Reimbursement Modal -->
+    <div id="addReimbursementModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Reimbursement Claim</h2>
+                <button class="close-btn" onclick="closeModal('addReimbursementModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="addReimbursementForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="employeeName">Employee Name</label>
+                            <input type="text" id="employeeName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="claimDate">Claim Date</label>
+                            <input type="date" id="claimDate" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="claimCategory">Category</label>
+                            <select id="claimCategory" class="form-control" required>
+                                <option value="">Select Category</option>
+                                <option value="Office Supplies">Office Supplies</option>
+                                <option value="Training">Training</option>
+                                <option value="Travel">Travel</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="claimAmount">Amount</label>
+                            <input type="text" id="claimAmount" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="claimDescription">Description</label>
+                        <textarea id="claimDescription" class="form-control" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="claimStatus">Status</label>
+                        <select id="claimStatus" class="form-control">
+                            <option value="Pending">Pending</option>
+                            <option value="Approved">Approved</option>
+                            <option value="Rejected">Rejected</option>
+                        </select>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-secondary" onclick="closeModal('addReimbursementModal')">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Claim</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Food & Travel Modal -->
+    <div id="addFoodTravelModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Food & Travel Expense</h2>
+                <button class="close-btn" onclick="closeModal('addFoodTravelModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="addFoodTravelForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="employeeName">Employee Name</label>
+                            <input type="text" id="employeeName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="expenseDate">Expense Date</label>
+                            <input type="date" id="expenseDate" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="expenseType">Expense Type</label>
+                            <select id="expenseType" class="form-control" required>
+                                <option value="">Select Type</option>
+                                <option value="Food">Food</option>
+                                <option value="Travel">Travel</option>
+                                <option value="Accommodation">Accommodation</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="expenseAmount">Amount</label>
+                            <input type="text" id="expenseAmount" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" id="location" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="expenseStatus">Status</label>
+                            <select id="expenseStatus" class="form-control">
+                                <option value="Pending">Pending</option>
+                                <option value="Approved">Approved</option>
+                                <option value="Completed">Completed</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="expenseDescription">Description</label>
+                        <textarea id="expenseDescription" class="form-control" rows="3" required></textarea>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-secondary" onclick="closeModal('addFoodTravelModal')">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Expense</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/hr/hr-finance.js"></script>
+</body>
+</html>
